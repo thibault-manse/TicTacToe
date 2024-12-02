@@ -30,7 +30,11 @@ for turn in range(9):
     print_board()
     
     if current_player == "X":  # Joueur humain
-        new_value = int(input(f"Joueur {current_player}, choisissez votre coup (1-9) : ")) 
+        try:
+            new_value = int(input(f"Joueur {current_player}, choisissez votre coup (1-9) : ")) 
+        except ValueError:
+            print("Veuillez entrer un nombre valide entre 1 et 9")
+            
     else:  # Tour du bot
         print("Tour du bot...")
         new_value = bot_move()
