@@ -1,10 +1,10 @@
 import random
 
-board = [" "," "," "," "," "," "," "," "," "]  # Plateau de jeu (liste avec 9 cases vides)
+board = [" "," "," "," "," "," "," "," "," "]  # game board (with 9 cases)
 retry = True
 re = 1
 
-# Fonction pour afficher le plateau
+# Display the board
 def print_board():
     print(board[0], "|", board[1], "|", board[2])
     print("---------")
@@ -12,14 +12,14 @@ def print_board():
     print("---------")
     print(board[6], "|", board[7], "|", board[8])
 
-# Le joueur "X" commence toujours
+# Random player begin first
 flag = random.randint(0, 1)
 if flag == 0:
     current_player = "X"
 else:
     current_player = "O"
 
-# Fonction pour alterner les tours entre les joueurs, de "X" à "O"
+#Alterne X and O
 def alternate_player(current_player):
     return "O" if current_player == "X" else "X"
 
@@ -28,8 +28,11 @@ def start(current_player):
     for turn in range(9):
 
         print_board()
-        
-        new_value = int(input(f"Joueur {current_player}, choisissez votre coup (1-9) : "))  # Utilisation de "new_value" pour choisir le coup du joueur
+        try :
+            new_value = int(input(f"Joueur {current_player}, choisissez votre coup (1-9) : "))  # Utilisation de "new_value" pour choisir le coup du joueur
+        except ValueError:
+            print("Valeur invalide, veillez reessayer !")
+            continue
         
         # Les différentes conditions à respecter pour enregistrer le choix du joueur actuel
         if 1 <= new_value <= 9 and board[new_value -1] == " ":
