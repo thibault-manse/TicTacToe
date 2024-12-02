@@ -1,4 +1,7 @@
-board = [" "," "," "," "," "," "," "," "," "]  # Plateau de jeu (liste avec 9 cases vides)
+import random
+
+# Plateau de jeu (liste avec 9 cases vides)
+board = [" ",]*9  
 
 # Fonction pour afficher le plateau
 def print_board():
@@ -8,8 +11,9 @@ def print_board():
     print("---------")
     print(board[6], "|", board[7], "|", board[8])
 
-# Le joueur "X" commence toujours
-current_player = "X"
+# Joueur initial choisi au hasard
+current_player = random.choice(["X", "O"])
+print(f"Le joueur {current_player} commence !")
 
 # Fonction pour alterner les tours entre les joueurs, de "X" à "O"
 def alternate_player(current_player):
@@ -17,14 +21,17 @@ def alternate_player(current_player):
 
 # Boucle pour définir les différents tours du jeu, avec un maximum de 9 tours
 for turn in range(9):
-
     print_board()
     
-    new_value = int(input(f"Joueur {current_player}, choisissez votre coup (1-9) : "))  # Utilisation de "new_value" pour choisir le coup du joueur
+    try:
+        new_value = int(input(f"Joueur {current_player}, choisissez votre coup (1-9) : "))
+    except ValueError:
+        print("Veuillez entrer un nombre valide entre 1 et 9.")
+        continue
     
     # Les différentes conditions à respecter pour enregistrer le choix du joueur actuel
-    if 1 <= new_value <= 9 and board[new_value -1] == " ":
-        board[new_value-1] = current_player
+    if 1 <= new_value <= 9 and board[new_value - 1] == " ":
+        board[new_value - 1] = current_player
     else:
         print("Coup invalide, réessayez.")
         continue
@@ -39,13 +46,14 @@ for turn in range(9):
         (board[0] == board[4] == board[8] != " ") or # Victoires par diagonales
         (board[2] == board[4] == board[6] != " ")):
         print_board()
-        print(f"Le joueur {current_player} gagne !") # Message de victoire
+        print(f"Le joueur {current_player} gagne !")
         break
 
     # Conditions pour un match nul
     if " " not in board:
         print_board()
-        print("Match nul !") # Message d'égalité
+        print("Match nul !")
         break
 
-    current_player = alternate_player(current_player) # Changer de joueur à la fin du tour
+    current_player = alternate_player(current_player)
+
