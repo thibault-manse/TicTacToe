@@ -1,3 +1,5 @@
+import random
+
 board = [" "," "," "," "," "," "," "," "," "]  # Plateau de jeu (liste avec 9 cases vides)
 
 # Fonction pour afficher le plateau
@@ -9,7 +11,9 @@ def print_board():
     print(board[6], "|", board[7], "|", board[8])
 
 # Le joueur "X" commence toujours
-current_player = "X"
+current_player=random.choice(["X","O"])
+print(f"Le joueur {current_player} commence")
+
 
 # Fonction pour alterner les tours entre les joueurs, de "X" à "O"
 def alternate_player(current_player):
