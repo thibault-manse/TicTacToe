@@ -25,8 +25,8 @@ def alternate_player(current_player):
 
 def start(current_player):
     # Boucle pour définir les différents tours du jeu, avec un maximum de 9 tours
-    for turn in range(9):
-
+    cases = 0
+    while cases < 9:
         print_board()
         try :
             new_value = int(input(f"Joueur {current_player}, choisissez votre coup (1-9) : "))  # Utilisation de "new_value" pour choisir le coup du joueur
@@ -37,6 +37,7 @@ def start(current_player):
         # Les différentes conditions à respecter pour enregistrer le choix du joueur actuel
         if 1 <= new_value <= 9 and board[new_value -1] == " ":
             board[new_value-1] = current_player
+            cases += 1
         else:
             print("Coup invalide, réessayez.")
             continue
