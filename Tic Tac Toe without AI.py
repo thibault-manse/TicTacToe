@@ -67,7 +67,7 @@ print("1 - Joueur vs Joueur")
 print("2 - Joueur vs IA")
 try : 
     choice = int(input("Choisissez votre mode de jeux (1 ou 2): "))
-except ValueError or choice < 1 or choice > 2 :
+except ValueError:
     print("Valeur rentré incorrect !")
 
 if choice == 1:
@@ -85,4 +85,7 @@ if choice == 1:
             retry = False
 
 elif choice == 2:
-    print("Il y aura le mode de jeux par l'IA ici !")
+    print("Il y aura le mode de jeux contre l'IA ici !")
+
+else :
+    print("Mode de jeux inexistant, choix uniquement entre 1 et 2")
