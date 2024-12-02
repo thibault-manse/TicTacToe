@@ -10,7 +10,7 @@ def print_board():
     print("---------")
     print(board[6], "|", board[7], "|", board[8])
 
-# Le joueur "X" commence toujours
+# Choisir aléatoirement qui commence. Le joueur humain sera toujours le joueur X, le bot toujours le joueur O
 current_player=random.choice(["X","O"])
 print(f"Le joueur {current_player} commence")
 
@@ -21,7 +21,7 @@ def alternate_player(current_player):
 
 # Fonction pour le bot qui joue un coup aléatoire
 def bot_move():
-    available_moves = [i for i in range(9) if board[i] == " "]  # Liste des cases vides
+    available_moves = [i for i in range(1,9) if board[i] == " "]  # Liste des cases vides
     return random.choice(available_moves)
 
 # Boucle pour définir les différents tours du jeu, avec un maximum de 9 tours
@@ -67,3 +67,4 @@ for turn in range(9):
         break
 
     current_player = alternate_player(current_player) # Changer de joueur à la fin du tour
+
