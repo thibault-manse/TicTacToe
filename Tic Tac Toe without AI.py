@@ -1,7 +1,7 @@
 import random
 
 # Plateau de jeu (liste avec 9 cases vides)
-board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]  
+board = [" ",]*9  
 
 # Fonction pour afficher le plateau
 def print_board():
