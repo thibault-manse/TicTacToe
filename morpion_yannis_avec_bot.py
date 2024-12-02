@@ -1,4 +1,6 @@
 import random
+import time
+from time import sleep
 
 board = [" "," "," "," "," "," "," "," "," "]  # Plateau de jeu (liste avec 9 cases vides)
 
@@ -22,7 +24,9 @@ def alternate_player(current_player):
 # Fonction pour le bot qui joue un coup aléatoire
 def bot_move():
     available_moves = [i for i in range(1,9) if board[i] == " "]  # Liste des cases vides
-    return random.choice(available_moves)
+    a=random.choice(available_moves)
+    print(a)
+    return a
 
 # Boucle pour définir les différents tours du jeu, avec un maximum de 9 tours
 for turn in range(9):
@@ -37,6 +41,7 @@ for turn in range(9):
             
     else:  # Tour du bot
         print("Tour du bot...")
+        time.sleep(1)
         new_value = bot_move()
 
     # Les différentes conditions à respecter pour enregistrer le choix du joueur actuel
@@ -48,7 +53,7 @@ for turn in range(9):
             continue  # Si joueur humain, demander un nouveau coup
         else:
             new_value = bot_move()  # Si bot, choisir un nouveau coup
-            board[new_value] = current_player
+            board[new_value-1] = current_player
 
 
     # Conditions pour gagner la partie
