@@ -62,15 +62,27 @@ def start(current_player):
 
         current_player = alternate_player(current_player) # Changer de joueur à la fin du tour
 
-while retry == True:
-    if re == 1:
-         start(current_player)
-         re = 0
-    val = str(input("Voulez vous rejouer ? (y ou n) : "))
-    if val != "y" and val !="n":
-        print("erreur d'input !")
-    elif val == "y":
-        re = 1
-        board = [" "," "," "," "," "," "," "," "," "]
-    elif val == "n":
-       retry = False
+print("Tic Tac Toa")
+print("1 - Joueur vs Joueur")
+print("2 - Joueur vs IA")
+try : 
+    choice = int(input("Choisissez votre mode de jeux (1 ou 2): "))
+except ValueError or choice < 1 or choice > 2 :
+    print("Valeur rentré incorrect !")
+
+if choice == 1:
+    while retry == True:
+        if re == 1:
+            start(current_player)
+            re = 0
+        val = str(input("Voulez vous rejouer ? (y ou n) : "))
+        if val != "y" and val !="n":
+            print("erreur d'input !")
+        elif val == "y":
+            re = 1
+            board = [" "," "," "," "," "," "," "," "," "]
+        elif val == "n":
+            retry = False
+
+elif choice == 2:
+    print("Il y aura le mode de jeux par l'IA ici !")
