@@ -1,7 +1,7 @@
 import random
 
-retry = True
-re = 1
+retry = True #variable pour la boucle qui sert a rejouer
+replay = 1 #variable servant a r'avoir la demande pour rejouer ou non
 
 # Display the board
 def print_board(board):
@@ -62,26 +62,26 @@ def game(board, current_player):
 
         current_player = alternate_player(current_player) # Changer de joueur à la fin du tour
 
-def start(retry, re):
+def start(retry, replay): #fonction du menu et du choix xe rejouer ou non
     print("Tic Tac Toa")
     print("1 - Joueur vs Joueur")
     print("2 - Joueur vs IA")
     try : 
-        choice = int(input("Choisissez votre mode de jeux (1 ou 2): "))
+        choice = int(input("Choisissez votre mode de jeux (1 ou 2): ")) #choix du mode de jeu
     except ValueError:
         print("Valeur rentré incorrect !")
 
     if choice == 1:
         while retry == True:
-            if re == 1:
+            if replay == 1:
                 board = [" "," "," "," "," "," "," "," "," "] #Create a table with 9 cases
                 game(board, current_player)
-                re = 0
-            val = str(input("Voulez vous rejouer ? (y ou n) : "))
+                replay = 0
+            val = str(input("Voulez vous rejouer ? (y ou n) : "))#choix de rejouer ou non
             if val != "y" and val !="n":
                 print("erreur d'input !")
             elif val == "y":
-                re = 1
+                replay = 1
             elif val == "n":
                 retry = False
 
@@ -91,4 +91,4 @@ def start(retry, re):
     else :
         print("Mode de jeux inexistant, choix uniquement entre 1 et 2")
 
-start(retry, re)
+start(retry, replay)
