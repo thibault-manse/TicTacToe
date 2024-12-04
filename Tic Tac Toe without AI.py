@@ -15,7 +15,7 @@ def print_board():
 current_player = random.choice(["X", "O"])
 print(f"Le joueur {current_player} commence !")
 
-# Fonction pour alterner les tours entre les joueurs, de "X" à "O"
+
 def alternate_player(current_player):
     return "O" if current_player == "X" else "X"
 
