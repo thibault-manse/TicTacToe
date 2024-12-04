@@ -23,7 +23,12 @@ def alternate_player(current_player):
 
 # Fonction pour le bot qui joue un coup aléatoire
 def bot_move():
-    available_moves = [i for i in range(1,9) if board[i] == " "]  # Liste des cases vides
+    print(board)
+    available_moves = []
+    for i in range(9) : 
+        if board[i] ==" " :
+            available_moves.append(i + 1)
+    print(available_moves)
     a=random.choice(available_moves)
     print(a)
     return a
@@ -45,7 +50,7 @@ for turn in range(9):
         new_value = bot_move()
 
     # Les différentes conditions à respecter pour enregistrer le choix du joueur actuel
-    if 1 <= new_value <= 9 and board[new_value -1] == " ":
+    if 1 <= new_value <= 9 and board[new_value - 1] == " ":
         board[new_value-1] = current_player
     else:
         print("Coup invalide, réessayez.")
