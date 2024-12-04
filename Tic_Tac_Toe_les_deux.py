@@ -2,7 +2,7 @@ import random
 import time
 # Library for the Tic-Tac-Toe game
 class TicTacToe:
-    def __init__(self):
+    def __init__(self): #self pour dire que c'est dans la fonction tictactoe. self = himself. récupère toutes les valeurs communes à la classe
         # Game board with 9 empty spaces
         self.board = [" "] * 9
         self.current_player = random.choice(["X", "O"])
@@ -48,7 +48,7 @@ class TicTacToe:
         """Run the game loop."""          
         for turn in range(9):
             self.print_board()
-            if mode == "friend" or (mode == "ia" and self.current_player == "x"):
+            if mode == "friend" or (mode == "ia" and self.current_player == "X"):
                 # Player input
                 try:
                     move = int(input(f"player {self.current_player},chose move (1-9): ")) -1
@@ -97,4 +97,4 @@ def main():
     game.start_game(mode)
 
 if __name__ == "__main__":
-    main()
+    main() #qd tu lances une classe, permet de dire que le contenu principal c'est main
