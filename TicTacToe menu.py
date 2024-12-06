@@ -25,9 +25,9 @@ class TicTacToe:
         while cases < 9:
             TicTacToe.print_board(self)
             try :
-                new_value = int(input(f"Joueur {self.current_player}, choisissez votre coup (1-9) : "))  # Using "new_value" to choose the player's move
+                new_value = int(input(f"Player {self.current_player}, choose your move (1-9) : "))  # Using "new_value" to choose the player's move
             except ValueError:
-                print("Valeur invalide, veillez reessayer !")
+                print("Invalide value, try again !")
                 continue
             
             # The different conditions to be respected to save the choice of the current player
@@ -35,7 +35,7 @@ class TicTacToe:
                 self.board[new_value-1] = self.current_player
                 cases += 1
             else:
-                print("Coup invalide, réessayez.")
+                print("Invalid move, try again")
                 continue
 
             # Conditions to win the game
@@ -48,34 +48,34 @@ class TicTacToe:
                 (self.board[0] == self.board[4] == self.board[8] != " ") or # Victories by diagonals
                 (self.board[2] == self.board[4] == self.board[6] != " ")):
                 TicTacToe.print_board(self)
-                print(f"Le joueur {self.current_player} gagne !") # Victory message
+                print(f"Player {self.current_player} wins !") # Victory message
                 break
 
             # Conditions for a draw
             if " " not in self.board:
                 TicTacToe.print_board(self)
-                print("Match nul !") # Message of equality
+                print("Draw !") # Message of equality
                 break
 
             self.current_player = TicTacToe.alternate_player(self) # Change player at end of round
 
     def start(self): #function of the menu and the choice xe replay or not
         print("Tic Tac Toa")
-        print("1 - Joueur vs Joueur")
-        print("2 - Joueur vs IA")
+        print("1 - Player vs Player")
+        print("2 - Player vs AI")
         try : 
-            choice = int(input("Choisissez votre mode de jeux (1 ou 2): ")) #choice of game mode
+            choice = int(input("Choose your game mode (1 ou 2): ")) #choice of game mode
         except ValueError:
-            print("Valeur rentré incorrect !")
+            print("Incorrect value entered !")
 
         if choice == 1:
             while self.retry == True:
                 if self.replay == 1:
                     TicTacToe.game(self)
                     self.replay = 0
-                val = str(input("Voulez vous rejouer ? (y ou n) : "))#choice to play again or not
+                val = str(input("Do you want to replay ? (y ou n) : "))#choice to play again or not
                 if val != "y" and val !="n":
-                    print("erreur d'input !")
+                    print("Error Value !")
                 elif val == "y":
                     self.replay = 1
                     self.board = [" "," "," "," "," "," "," "," "," "]
@@ -83,10 +83,10 @@ class TicTacToe:
                     self.retry = False
 
         elif choice == 2:
-            print("Il y aura le mode de jeux contre l'IA ici !")
+            print("There will be the game mode against the AI ​​here!")
 
         else :
-            print("Mode de jeux inexistant, choix uniquement entre 1 et 2")
+            print("Game mode non-existent, choice only between 1 and 2")
 
 
 #exemple = TicTacToe()
