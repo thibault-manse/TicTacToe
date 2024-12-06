@@ -64,7 +64,7 @@ class TicTacToe:
         print("1 - Player vs Player")
         print("2 - Player vs AI")
         try : 
-            choice = int(input("Choose your game mode (1 ou 2): ")) #choice of game mode
+            choice = int(input("Choose your game mode (1 or 2): ")) #choice of game mode
         except ValueError:
             print("Incorrect value entered !")
 
