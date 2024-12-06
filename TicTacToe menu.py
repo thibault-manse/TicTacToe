@@ -73,7 +73,7 @@ class TicTacToe:
                 if self.replay == 1:
                     TicTacToe.game(self)
                     self.replay = 0
-                val = str(input("Do you want to replay ? (y ou n) : "))#choice to play again or not
+                val = str(input("Do you want to replay ? (y or n) : "))#choice to play again or not
                 if val != "y" and val !="n":
                     print("Error Value !")
                 elif val == "y":
