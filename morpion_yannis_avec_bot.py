@@ -2,9 +2,9 @@ import random
 import time
 from time import sleep
 
-board = [" "," "," "," "," "," "," "," "," "]  # Plateau de jeu (liste avec 9 cases vides)
+board = [" "," "," "," "," "," "," "," "," "]  # Playground (list of 9 empty slots)
 
-# Fonction pour afficher le plateau
+# Function : display board
 def print_board():
     print(board[0], "|", board[1], "|", board[2])
     print("---------")
@@ -12,16 +12,16 @@ def print_board():
     print("---------")
     print(board[6], "|", board[7], "|", board[8])
 
-# Choisir aléatoirement qui commence. Le joueur humain sera toujours le joueur X, le bot toujours le joueur O
+# Randomly choosing the first player. Human player will always be X, bot will always be O
 current_player=random.choice(["X","O"])
 print(f"Le joueur {current_player} commence")
 
 
-# Fonction pour alterner les tours entre les joueurs, de "X" à "O"
+# Function to alternate turns
 def alternate_player(current_player):
     return "O" if current_player == "X" else "X"
 
-# Fonction pour le bot qui joue un coup aléatoire
+# Function : a bot that plays randomly
 def bot_move():
     print(board)
     available_moves = []
@@ -33,52 +33,52 @@ def bot_move():
     print(a)
     return a
 
-# Boucle pour définir les différents tours du jeu, avec un maximum de 9 tours
+# Loop to determine turns (max = 9)
 for turn in range(9):
 
     print_board()
     
-    if current_player == "X":  # Joueur humain
+    if current_player == "X":  # Human
         try:
             new_value = int(input(f"Joueur {current_player}, choisissez votre coup (1-9) : ")) 
         except ValueError:
             print("Veuillez entrer un nombre valide entre 1 et 9")
             
-    else:  # Tour du bot
+    else:  # Bot's turn
         print("Tour du bot...")
         time.sleep(1)
         new_value = bot_move()
 
-    # Les différentes conditions à respecter pour enregistrer le choix du joueur actuel
+    # Mandatory conditions to register a move
     if 1 <= new_value <= 9 and board[new_value - 1] == " ":
         board[new_value-1] = current_player
     else:
         print("Coup invalide, réessayez.")
         if current_player == "X":
-            continue  # Si joueur humain, demander un nouveau coup
+            continue  # if human, ask for another move
         else:
-            new_value = bot_move()  # Si bot, choisir un nouveau coup
+            new_value = bot_move()  # If bot, chose another move
             board[new_value-1] = current_player
 
 
-    # Conditions pour gagner la partie
-    if ((board[0] == board[1] == board[2] != " ") or # Victoires par lignes
+    # Winning conditions/combinaisons
+    if ((board[0] == board[1] == board[2] != " ") or # Victory by rows
         (board[3] == board[4] == board[5] != " ") or
         (board[6] == board[7] == board[8] != " ") or
-        (board[0] == board[3] == board[6] != " ") or # Victoires par colonnes
+        (board[0] == board[3] == board[6] != " ") or # Victory by columns
         (board[1] == board[4] == board[7] != " ") or
         (board[2] == board[5] == board[8] != " ") or
-        (board[0] == board[4] == board[8] != " ") or # Victoires par diagonales
+        (board[0] == board[4] == board[8] != " ") or # Victory by diagonals
         (board[2] == board[4] == board[6] != " ")):
         print_board()
-        print(f"Le joueur {current_player} gagne !") # Message de victoire
+        print(f"Le joueur {current_player} gagne !") # Yay ! You won :)
         break
 
-    # Conditions pour un match nul
+    # Conditions for a draw
     if " " not in board:
         print_board()
-        print("Match nul !") # Message d'égalité
+        print("Match nul !") # Oh, it's a draw!
         break
 
-    current_player = alternate_player(current_player) # Changer de joueur à la fin du tour
+    current_player = alternate_player(current_player) # allows to alternate between the two players
 
